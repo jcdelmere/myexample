@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { slideInAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
-  template: `<div>Hello {{value}}</div>`,
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  animations: [ slideInAnimation ]
 })
 export class AppComponent {
-  value = 'World';
+  getAnimationData(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
 }
